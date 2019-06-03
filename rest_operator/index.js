@@ -17,3 +17,4 @@ var numbers2 = [5, 6, 7, 8]
 var result = numbers.concat(numbers2); //объединение с помощью метода concar
 console.log(result);
 var result = [ ...numbers, ...numbers2 ] //объединение 
+

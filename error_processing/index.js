@@ -62,8 +62,24 @@ function div3(a, b) {
 	}
 } 
 
-var result = div3(10,2);
+//выносим try catch за пределы функции
+function div3(a, b) {
+		if (b < 0) {
+			throw new Error('b должен быть положительным числом');
+		} else if (b == 0) {
+			throw new Error('На ноль делить нельзя');
+		} else if (b == undefined) {
+			throw new Error('b должен быть передан');
+		} else if (!isFinite(b)) {
+			throw new Error('b должен быть числом');
+		} 
 
-if (result != undefined) {
+		return a / b;
+}
+
+try {
+	var result = div3(10,0);
 	console.log(result);
+} catch (e) {
+	console.log(e.message);
 }

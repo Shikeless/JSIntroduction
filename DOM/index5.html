@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+	</style>
+</head>
+<body>
+	<div class="class-1">
+		Привет
+	</div>
+	<div class="class-1">
+		<a href="123" id="myLink">Loftschool</a>
+	</div>
+	<div class="class-1 class-2">
+		!!!
+	</div>
+	<script>
+		const myLink = document.querySelector('#myLink');
+		console.log(myLink.parentNode.parentNode)
+
+		const body = document.body;
+
+		console.log(body.firstElementChild.nextElementSibling.nextElementSibling);
+		console.log(body.firstElementChild.parentNode);
+
+		for(const node of body.children) {
+			console.log(node);
+		// 	if(node.nodeType === 3) {
+		// 	console.log('text', node);
+		// } else if (node.nodeType === 1) {
+		// 	console.log('element', node);
+		// }
+		}
+
+		let cursor = myLink;
+		while (cursor = cursor.parentNode) {
+			console.log(cursor);
+		}
+	</script>
+</body>
+</html>

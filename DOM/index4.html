@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+	<body>
+		<input type="text" id="nameInput">
+		<button id="myButton">Add</button>
+
+		<ul id="list"></ul>
+
+		<script>
+			const myButton = document.querySelector('#myButton');
+			const nameInput = document.querySelector('#nameInput');
+			const list = document.querySelector('#list');
+
+			myButton.addEventListener('click', function() {
+				const newItem = document.createElement('li');
+				newItem.classList.add('item');
+				console.log(nameInput.elements);
+				newItem.textContent = nameInput.value;
+
+				const deleteButton = document.createElement('button');
+				deleteButton.textContent = 'delete';
+
+				deleteButton.addEventListener('click', function(){
+					list.removeChild(newItem);
+				});
+
+				newItem.appendChild(deleteButton);
+				list.appendChild(newItem);
+
+				nameInput.value = '';
+			});
+		</script>
+	</body>
+</html>

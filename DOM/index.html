@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="end">
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<style...>
+	</head>
+	<body>
+		<div id="container">
+			<div class="hello">Hey, loftchool!</div>
+			<p><button id="myButton">push me!</button></p>
+			<a href="https://loftschool.com">Jump to site</a>
+		</div>
+		<script>
+			const elem = document.querySelector('#container');
+			elem.style.color = '#f00';
+			elem.style.fontSize = '30px';
+
+			const elem1 = document.querySelector('.hello');
+			elem1.textContent = 'New text';
+
+			const elem2 = document.createElement('div');
+			const elem3 = document.createElement('div');
+			elem.appendChild(elem2); 
+			document.body.appendChild(elem3)
+			const elem4 = document.createElement('span');
+			elem.appendChild(elem4);
+			elem2.textContent = 'Text into div';
+			elem4.textContent = 'Text into span';
+			elem3.textContent = 'Text into body div';
+		</script>
+	</body>
+</html>

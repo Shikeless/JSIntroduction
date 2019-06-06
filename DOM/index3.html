@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head...>
+	<body>
+		<form id="myForm">
+			<div>
+				Name:<br>
+				<input type="text" name="name">
+			</div>
+			<div>
+				Last Name:<br>
+				<input type="text" name="lastName">
+			</div>
+			<div>
+				Gender:<br>
+				<select name="gender">
+					<option value="m">Male</option>
+					<option value="f">Female</option>
+				</select>
+			</div>
+			<div>
+				<input type="checkbox" name="auto"> have car
+			</div>
+			<br>
+			<button id="sendButton">Send</button>
+		</form>
+
+		<script>
+			const myForm = document.querySelector('#myForm');
+			const sendButton = document.querySelector('#sendButton');
+
+			sendButton.addEventListener('click', function(event){
+				event.preventDefault();
+
+				console.log(myForm.elements.name.value);
+				console.log(myForm.elements.lastName.value);
+
+				if (myForm.elements.gender.value === 'm') {
+					console.log('gender: male');
+				} else {
+					console.log('gender: female');
+				}
+
+				if (myForm.elements.auto.checked === true) {
+					console.log('have car');
+				}
+			});
+
+			const newElem = document.getElementById('sendButton');
+			console.log(newElem);
+
+			const newList = document.getElementsByTagName('div');
+			console.log(newList);
+		</script>
+	</body>
+</html>

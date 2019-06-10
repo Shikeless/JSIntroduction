@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<button id="myButton">click</button>
+	<div id="myDiv">
+	</div>
+	<script>
+		const myButton = document.querySelector('#myButton');
+		const myDiv = document.querySelector('#myDiv');
+
+		myButton.addEventListener('click', () => {
+			const event = new CustomEvent('my-event');
+			myDiv.dispatchEvent(event);
+		}) 
+
+		myDiv.addEventListener('my-event', (e) => {
+			console.log(e);
+		});
+
+
+
+		// const button = {            общая концепция обработчика событий
+		//  	handlers: {
+		//  		click: [
+		//  			() => {
+
+		//  			},
+		//  			() => {
+
+		//  			}
+		//  		],
+		//  		mousemove: [
+		//  			() => {
+
+		//  			},
+		//  			() => {
+
+		//  			}
+		//  		],
+		//  	},
+		//  	dispatchEvent(name) {
+		//  		if (this.handler[name]) {
+		//  			for (const handler of this.handlers[name]) {
+		//  				handler();
+		//  			}
+		//  		}
+		//  	},
+		//  	addEventListener(name, handler) {
+		//  		if (!this.handler[name]) {
+		//  			this.handler[name] = [];
+		//  		}
+
+		//  		if (!this.handler[name].includes(handler)){
+		//  		this.handler[name].push(handler);
+		//  		}
+		//  	}
+		// };
+
+		// button.addEventListener('click', () => {
+		// });
+
+		// button.addEventListener('click', () => {
+		// });
+
+		// button.dispatchEvent('keypress');
+	</script>
+</body>
+</html>

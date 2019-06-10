@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Practice3</title>
+</head>
+<body>
+	<ul id="list"></ul>
+	<button id="loadButton">load</button>
+	<script>
+		const list = document.querySelector('#list');
+		const loadButton = document.querySelector('#loadButton');
+
+		document.body.addEventListener('click', e => {  //создать глобальное событие с условием
+			if(e.target.tagName === 'LI') {
+				console.log(e.target.textContent);
+			}
+		})
+
+		loadButton.addEventListener('click', async () => {
+			const url = "https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json";
+			const response = await fetch(url);
+			const cities = await response.json();
+			const fragment = document.createDocumentFragment();
+
+			for (const city of cities) {
+				const li = document.createElement('li');
+
+				li.textContent = city.name;
+				// li.addEventListener('click', e => {   создание события по обработчику
+				// 	console.log(e.target.textContent)
+				// });
+
+				fragment.appendChild(li);
+			}
+
+			list.appendChild(fragment);
+		});
+	</script>
+</body>
+</html>

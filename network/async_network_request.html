@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<button id="loadButton">Donwload</button>
+
+	<div id="result"></div>
+
+	<script>
+		const loadButton = document.querySelector('#loadButton');
+		const result = document.querySelector('#result');
+
+		loadButton.addEventListener('click',() => {                   //приме XML запроста в эвент лисенере
+			const xhr = new XMLHttpRequest();
+
+			xhr.open('GET', 'content.txt');                           //открытие запроса, первым аргументом метод HTTP, вторым
+																	  //адрес ресурса
+		    xhr.send();                                               //отправка сформированого запроса   
+
+		    xhr.addEventListener('load', () => {                      //загрузить контент запрашиваемого ресурса/файла
+		    	if(xhr.status >= 404) {
+		    		console.log('error on the server side');
+		    	} else {
+		    		console.log(xhr.responseText);
+		    		result.innerText = xhr.responseText;
+		    	}
+		    });                  
+		});
+	</script>
+</body>
+</html>

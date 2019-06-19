@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style>
+		input[type=file] {
+			width: 0.1px;
+			height: 0.1px;
+			opacity: 0;
+			overflow: hidden;
+			position: absolute;
+			z-index: -1;
+		}
+
+		.file-label {
+			cursor: pointer;
+		}
+
+		.label-image {
+			font-size: 30px;
+		}
+
+		#theImage {
+			width: 200px;
+		}
+	</style>
+</head>
+	<body class="container text-center">
+		<input type="file" id="photoInput">  <!-- дает возможность выбрать любой файл из файлвой системы -->
+		<label for="photoInput" class="file-label text-center">
+			<div class="label-image glyphicon glyphicon-upload"></div>
+			<div class="label-text">Выбрать файл</div>
+		</label>
+		<div>
+			<img scr="" class="img-circle" id="theImage">  <!-- элемент который хранит загружаемое изображение -->
+		</div>
+		<script>
+			const theImage = document.querySelector('#theImage');
+			const photoInput = document.querySelector('#photoInput');
+			const fileReader = new FileReader();
+		
+			fileReader.addEventListener('load', function() { //событие происходит когда файл полностью загржается 
+				theImage.src = fileReader.result; //.src содержит целый закодированый файл
+			});
+
+			photoInput.addEventListener('change', function(e) { //change возникает когда мы выбираем файл
+				const file = e.target.files[0]; //
+
+				if (file) {
+					if (file.size > 300 * 1024) {
+						alert('Слишком большой файл')
+					} else {
+						fileReader.readAsDataURL(file);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

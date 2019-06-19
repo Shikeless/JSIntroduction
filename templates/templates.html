@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
+	<title></title>
+</head>
+<body class="container">
+	<div id="friends"></div>
+
+	<script>
+		const friendsNode = document.querySelector('#friends')
+		const data = [
+		{
+ 			name: 'Ivan',
+ 			lastName: 'Petrov',
+ 			photo: 'https://vokrug.tv/pic/person/3/2/7/6/327677822a6f0e3f1493659a12f51e70.jpg'
+		},
+		{
+			name: 'Andrey',
+ 			lastName: 'Nikitin',
+ 			photo: 'http://stuki-druki.com/biofoto1/reper-Guf-01.jpg'	
+		}
+		];
+
+		// renderFirends(data);
+
+		// function renderFirends(friends) { //принимаем массив data
+		// 	friends.map(createFriendNode).forEach(node => { //для каждого элемента вызвать данную функцию
+		// 		friendsNode.appendChild(node);
+		// 	});
+		// }
+
+		// function createFriendNode(friend) { //создание нода с содержимым data 
+		// 	const friendNode = document.createElement('div');
+		// 	const firstNameNode = document.createElement('div');
+		// 	const lastNameNode = document.createElement('div');
+		// 	const photoNode = document.createElement('div');
+
+		// 	friendNode.classList.add('friend');
+		// 	firstNameNode.textContent = friend.name;
+		// 	lastNameNode.textContent = friend.lastName;
+		// 	photoNode.src = friend.photo;
+
+		// 	friendNode.appendChild(photoNode);
+		// 	friendNode.appendChild(firstNameNode);
+		// 	friendNode.appendChild(lastNameNode);
+
+		// 	return friendNode;
+		// }
+		const template = Handlebars.compile('<div class="friend"><div>{{name}}</div><div>{{lastName}}</div></div>');
+		console.log(template);
+		let html = template(data);
+		console.log(html);
+		friendsNode.innerHTML = html;
+		console.log(friendsNode);
+
+		// document.addEventListener('DOMContentLoader', () => {
+		// 	const template = Handlebars.compile('<div class="friends">{{#each list}}<div class="friend"><img src={{photo}}><div>{{name}}</div><div>{{lastName}}</div></div>{{/each}}</div>');
+			
+		// 	console.log(template(data));
+		// });
+	</script>
+		
+</body>
+</html>

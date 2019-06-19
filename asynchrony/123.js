@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Async</title>
-</head>
-<body>
-	<script>
-		function delay(ms) {
+	function delay(ms) {
 			return new Promise((resolve, reject) => {
-				setTimeout(() => resolve(Math.random()), ms)
+				setTimeout(() => resolve(console.log(Math.random())), ms)
 			});
 		}
 
@@ -25,7 +17,3 @@
 		}
 
 		fn();
-
-	</script>
-</body>
-</html>

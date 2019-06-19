@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body class="container text-center">
+	<div>
+		ФИО:<br>
+		<input type="text" id="myName">
+	</div>
+	<div>
+		Дата Рождения:<br>
+		<input type="text" id="bday">
+	</div>
+	<div>
+		О себе:<br>
+		<textarea id="about"></textarea>
+	</div>
+	<div>
+		<label><input type="checkbox" id="isSessionStorage"> использовать Session Storage </label>
+	</div>
+	<div>
+		<button id="save">Сохранить</button>
+		<button id="load">Загрузить</button>
+	</div>
+	<script>
+		const myName= document.querySelector('#myName');
+		const body = document.querySelector('#bday');
+		const aobut = document.querySelector('#about');
+
+		const save = document.querySelector('#save');
+		const load = document.querySelector('#load');
+		const isSessionStorage = document.querySelector('#isSessionStorage'); //тоже что и localStorage, только хранит информацию до конца сессии
+
+		let storage = localStorage;     
+
+		save.addEventListener('click', function() { 
+			storage.data = JSON.stringify({ //хранит только строки и числа, чтобы хранить объекты в loacalstorage необходимо исользовать json.stringify
+				myName: myName.value,
+				bday: bday.value,
+				about: about.value
+			});
+		});
+
+		load.addEventListener('click', function() {
+			const data = JSON.parse(storage.data || '{}'); //обратный процесс извлечения информации, или возращения пустого объекта если в .data пусто
+			myName.value = data.myName || '';
+			bday.value = data.bday || '';
+			about.value = data.about || '';
+		});
+
+		isSessionStorage.addEventListener('change', function(e) {
+			storage = isSessionStorage.checked ? isSessionStorage : localSotrage //если галочка нажата, storage = SessionStorage
+		});
+
+		window.addEventListener('storage', function(event) {
+			load.click(); //отвечает за загрузку информации из localstorage, при загрузки страницы,умелирую эвент клика по клопке load
+		});
+	</script>
+</body>
+</html>
